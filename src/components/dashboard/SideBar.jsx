@@ -1,31 +1,25 @@
-import * as React from "react";
-import {
-  Box,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-  Drawer,
-  Toolbar,
-  Avatar,
-  ListItemButton,
-  CssBaseline,
-  AppBar as MuiAppBar,
-  TextField,
-  InputAdornment,
-  IconButton,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import EventIcon from "@mui/icons-material/Event";
-import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
-import profile from "../../assets/images/myProfile.jpg";
+import {
+  Avatar,
+  Box,
+  CssBaseline,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  AppBar as MuiAppBar,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
+import * as React from "react";
 import { NavLink } from "react-router-dom";
-import effigo from "../../assets/images/effigo.png";
-import SearchIcon from "@mui/icons-material/Search";
+import profile from "../../assets/images/myProfile.jpg";
 
 const drawerWidth = 180;
 
@@ -69,7 +63,7 @@ const SideBar = ({ children }) => {
       <CssBaseline />
       <AppBar className="glass-drawer white" position="fixed">
         <Toolbar>
-          <img src={effigo} alt="logo" height={"25px"} />
+          <Typography>LOGO</Typography>
           <Typography
             fontWeight={600}
             fontSize={"14px"}

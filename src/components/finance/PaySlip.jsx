@@ -1,98 +1,143 @@
-import React, { useState } from "react";
+import { KeyboardArrowDown } from "@mui/icons-material";
+import AttachFileIcon from "@mui/icons-material/AttachFile";
 import {
-  Box,
-  Typography,
+  Autocomplete,
+  Button,
   Grid,
-  Card,
-  CardHeader,
-  CardContent,
-  IconButton,
+  Input,
+  Paper,
   Stack,
   TextField,
+  Typography,
 } from "@mui/material";
-import FileDownloadIcon from "@mui/icons-material/FileDownload";
-import PdfIcon from "../../assets/images/AdobeIcon.svg";
+import React, { useState } from "react";
+import paySlip from "../../assets/pdf/jan_payslip.pdf";
+import PdfViewer from "../component_utils/PdfViewer";
 import MonthYearPicker from "./MonthYearPicker";
 
-const data = [
+const form16 = [
   {
-    title: "January",
-    pdf: "Jan.pdf",
+    id: 1,
+    name: "2024",
+    items: ["Form 16 A", "Form 16 B"],
   },
   {
-    title: "February",
-    pdf: "Feb.pdf",
+    id: 2,
+    name: "2023",
+    items: ["Form 16 A", "Form 16 B"],
   },
   {
-    title: "March",
-    pdf: "Mar.pdf",
-  },
-  {
-    title: "April",
-    pdf: "Apr.pdf",
-  },
-  {
-    title: "May",
-    pdf: "May.pdf",
-  },
-  {
-    title: "June",
-    pdf: "June.pdf",
-  },
-  {
-    title: "July",
-    pdf: "July.pdf",
-  },
-  {
-    title: "August",
-    pdf: "Aug.pdf",
-  },
-  {
-    title: "September",
-    pdf: "Sept.pdf",
-  },
-  {
-    title: "October",
-    pdf: "Oct.pdf",
-  },
-  {
-    title: "November",
-    pdf: "Nov.pdf",
-  },
-  {
-    title: "December",
-    pdf: "Dec.pdf",
+    id: 3,
+    name: "2022",
+    items: ["Form 16 A", "Form 16 B"],
   },
 ];
 
 const PaySlip = () => {
+  const [issueDescription, setIssueDescription] = useState("");
+  const [attachedFile, setAttachedFile] = useState(null);
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setAttachedFile(file);
+  };
+
+  const handleSubmit = () => {
+    console.log("Issue Description:", issueDescription);
+    console.log("Attached File:", attachedFile);
+  };
+
   return (
-    <Grid container spacing={2}>
-      <MonthYearPicker />
-      {/* {data.map((item, index) => (
-        <Grid item xs={12} sm={6} md={2} lg={2} key={index}>
-          <Card
+    <Grid container spacing={3}>
+      <Grid item xs={12} md={6}>
+        <Stack direction={"row"} spacing={3} alignItems="center">
+          <Paper
             sx={{
-              borderTopLeftRadius: "35px",
-              borderTopRightRadius: "35px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              borderRadius: "10px",
+              border: "2px solid #98BDFF",
+              padding: "16px",
+              width: "60%",
             }}>
-            <img src={PdfIcon} />
-            <Stack
-              direction="row"
-              alignItems={"center"}
-              px={2}
-              pb={2}
-              height={"25px"}>
-              <Typography fontSize={"14px"} color="#AAAAAE">
-                {item.pdf}
-              </Typography>
-              <IconButton>
-                <FileDownloadIcon />
-              </IconButton>
-            </Stack>
-          </Card>
-        </Grid>
-      ))} */}
+            <Typography variant="subtitle2" mb={2}>
+              Download Pay Slip
+            </Typography>
+            <MonthYearPicker />
+          </Paper>
+          <Paper
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              borderRadius: "10px",
+              border: "2px solid #7978e9",
+              padding: "16px",
+              width: "60%",
+            }}>
+            <Typography variant="subtitle2" mb={2}>
+              Download Form 16
+            </Typography>
+            <Autocomplete
+              options={form16}
+              groupBy={(option) => option.name}
+              popupIcon={<KeyboardArrowDown />}
+              disableClearable
+              getOptionLabel={(option) => option.items}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Select Form 16"
+                  variant="outlined"
+                  size="small"
+                />
+              )}
+            />
+          </Paper>
+        </Stack>
+        <Paper
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            padding: "20px",
+            width: "100%",
+            mt: 2,
+          }}>
+          <Typography variant="subtitle2" mb={2}>
+            Report an Issue
+          </Typography>
+          <TextField
+            label="Issue Description"
+            multiline
+            rows={3}
+            fullWidth
+            value={issueDescription}
+            onChange={(e) => setIssueDescription(e.target.value)}
+          />
+          <Stack
+            direction={"row"}
+            spacing={2}
+            justifyContent={"space-between"}
+            mt={2}>
+            <Button variant="outlined" startIcon={<AttachFileIcon />}>
+              <Input
+                sx={{ display: "none" }}
+                type="file"
+                onChange={handleFileChange}
+              />
+              Attach File
+            </Button>
+            <Button variant="contained" color="primary" onClick={handleSubmit}>
+              Submit
+            </Button>
+          </Stack>
+        </Paper>
+      </Grid>
+      <Grid item xs={12} md={6} height={"420px"}>
+        <PdfViewer file={paySlip} />
+      </Grid>
     </Grid>
   );
 };

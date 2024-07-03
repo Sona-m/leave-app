@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Tab, Box, Grid } from "@mui/material";
+import { Tab, Box, Grid, Typography } from "@mui/material";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
@@ -10,13 +10,9 @@ import LeaveStatus from "../components/leave/LeaveStatus";
 import { styled } from "@mui/material/styles";
 
 const StyledTab = styled(Tab)({
-  color: "#7978e9",
+  color: "#898989",
   "&.Mui-selected": {
-    backgroundColor: "#7978e9 !important",
-    color: "#fff",
-    borderBottom: "0px !important",
-    borderTopLeftRadius: "8px",
-    borderTopRightRadius: "8px",
+    color: "#4b49ac",
   },
 });
 
@@ -28,27 +24,42 @@ const Leave = () => {
   };
 
   return (
-    <Box>
+    <Box
+      height={"calc(100vh - 200px)"}
+      sx={{
+        "& .MuiTabs-flexContainer": {
+          justifyContent: "space-around",
+          display: "flex",
+          height: "30px",
+          marginBottom: "4px",
+          alignItems: "center",
+        },
+        "& .MuiTabs-indicator": {
+          backgroundColor: "#4b49ac",
+          top: "30px",
+        },
+      }}>
       <TabContext value={value}>
-        <Box
-          sx={{
-            borderColor: "divider",
-            bgcolor: "#fff",
-            "& .MuiTabs-indicator": {
-              backgroundColor: "transparent",
-            },
-          }}>
+        <Box borderColor={"divider"} bgcolor={"#fff"}>
           <TabList onChange={handleChange}>
-            <StyledTab label="Apply Leave" value="1" />
-            <StyledTab label="Leave Status" value="2" />
-            <StyledTab label="Leave Statistics" value={"3"} />
+            <StyledTab
+              label={<Typography variant="body1">APPLY LEAVE</Typography>}
+              value="1"
+            />
+            <StyledTab
+              label={<Typography variant="body1">LEAVE STATUS</Typography>}
+              value="2"
+            />
+            <StyledTab
+              label={<Typography variant="body1">LEAVE STASTISTICS</Typography>}
+              value={"3"}
+            />
           </TabList>
         </Box>
-        <TabPanel value="1" sx={{ padding: "12px" }}>
+        <TabPanel value="1" sx={{ p: 2 }}>
           <Grid
             container
             display={"flex"}
-            height={"100%"}
             flexDirection={"row"}
             justifyContent={"space-between"}>
             <ApplyLeave />

@@ -9,9 +9,11 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
+  Box,
   Input,
   Button,
   Stack,
+  Divider,
 } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { KeyboardArrowDown } from "@mui/icons-material";
@@ -25,6 +27,7 @@ const ApplyLeave = () => {
       sm={12}
       xs={12}
       lg={7}
+      p={1}
       className="apply-leave-card">
       <Grid item xs={12} md={6} p={1}>
         <FormControl fullWidth>

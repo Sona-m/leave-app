@@ -1,0 +1,230 @@
+$darkBlue : #4B49AC;
+$lightBlue: #98BDFF;
+$background: #f5f7ff;
+$white: #fff;
+$neutral1: #E5E5E5;
+$neutral2: #AAAAAE;
+$success: #47c746;
+$error: #E8415B;
+$black: #2E3133;
+$box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.06);
+$purple : #7879e9;
+$border : #e2e1e6;
+
+.nav-link {
+    color: $black;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.glass-drawer {
+    height: 50px;
+
+    & .MuiToolbar-root {
+        min-height: 50px !important;
+        padding: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        height: 50px !important;
+    }
+}
+
+.white {
+    background: $white !important;
+}
+
+.nav-link.active {
+    color: $white !important;
+    background: $darkBlue;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.nav-icon {
+    min-width: 20px !important;
+    margin-right: 10px;
+}
+
+.nav-link.active .nav-icon {
+    color: $white !important;
+}
+
+.dashboard-card {
+    background-color: $white;
+    border-radius: 10px !important;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .1);
+    height: 100% !important;
+}
+
+.dashboard-card-header {
+    padding-top: 12px !important;
+    padding-bottom: 5px !important;
+    color: $darkBlue;
+
+    & .MuiCardHeader-title {
+        font-size: 18px !important;
+        font-weight: 500 !important;
+    }
+}
+
+
+.dashboard-card-content {
+    padding-top: 10px !important;
+    padding-bottom: 0px !important;
+    height: 85% !important;
+    overflow-y: scroll;
+}
+
+.long-weekend-card {
+    background-color: $lightBlue !important;
+    color: $white !important;
+    border-radius: 12px !important;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2) !important;
+    position: relative !important;
+    height: 100% !important;
+}
+
+.long-weekend-text {
+    color: $darkBlue !important;
+    display: flex !important;
+    justify-content: center !important;
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    line-height: 1.75 !important;
+    text-align: center !important;
+    font-family: cursive;
+}
+
+.mandatory {
+    color: $error;
+}
+
+.date-display {
+    color: $darkBlue !important;
+    font-size: 60px !important;
+    font-weight: 500 !important;
+}
+
+.week {
+    color: $black !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.4em !important;
+}
+
+.leave-datagrid {
+    border: 0px !important;
+}
+
+.profile-label {
+    color: $darkBlue !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+}
+
+.apply-leave-card {
+    background: #fff;
+    padding: 10px;
+    border: 2px solid $darkBlue;
+    border-radius: 10px;
+}
+
+.profile-card-header {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    color: $white;
+
+    & .MuiCardHeader-title {
+        font-size: 18px !important;
+        font-weight: 500 !important;
+        line-height: 1.9;
+    }
+}
+
+.accounts-card {
+    padding: 16px;
+    border-radius: 0px !important;
+    height: 300px;
+}
+
+.accounts-card-header {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    color: $darkBlue;
+
+    & .MuiCardHeader-title {
+        font-size: 18px !important;
+        font-weight: 500 !important;
+        line-height: 1.9;
+        text-align: center;
+    }
+}
+
+.rpv-default-layout__sidebar-headers {
+    background-color: $darkBlue !important;
+
+    button {
+        color: $white !important;
+    }
+}
+
+.rpv-default-layout__toolbar {
+    background-color: $darkBlue !important;
+    border-bottom: none;
+
+    button {
+        color: $white !important;
+
+        &:hover {
+            color: $white !important;
+        }
+
+        &.rpv-core__minimal-button--selected {
+            background-color: $white !important;
+
+            &:hover {
+                background-color: $white !important;
+            }
+        }
+    }
+}
+
+
+.rpv-default-layout__sidebar-content {
+    background-color: $white !important;
+    color: white !important;
+}
+
+.rpv-default-layout__container {
+    border: 4px solid $darkBlue !important
+}
+
+.MuiDateCalendar-root {
+    height: fit-content !important;
+}
+
+.pending-leaves-tablehead {
+    background: $background !important;
+    border-radius: 4px !important;
+}
+
+.pendingleave-card-content {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.pending-leave-table {
+    border: 1px solid $border;
+}
+
+.display-leave-card {
+    background-color: #fff !important;
+    color: #333333 !important;
+    border-radius: 8px !important;
+}

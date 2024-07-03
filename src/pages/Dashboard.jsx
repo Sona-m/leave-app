@@ -10,24 +10,21 @@ import LongWeekend from "../components/dashboard/LongWeekend";
 
 const Dashboard = () => {
   return (
-    <Grid container p={2} display={"flex"} spacing={2} pt={4} bgcolor="#f5f7ff">
+    <Grid container p={2} display={"flex"} rowGap={2} pt={4} bgcolor="#f5f7ff">
       <LeaveCard />
-      <Grid item xs={12} sm={12} md={3} lg={3}>
+      <Grid
+        container
+        height={"350px"}
+        display={"flex"}
+        pl={2}
+        columnSpacing={2}>
         <Calendar />
-      </Grid>
-      <Grid item xs={12} sm={12} md={6} lg={6}>
         <Announcements />
-      </Grid>
-      <Grid item xs={12} sm={12} md={3} lg={3}>
         <EmployeeLeaves />
       </Grid>
-      <Grid item xs={12} sm={12} md={6} lg={6}>
+      <Grid container columnSpacing={2} height={"350px"} pl={2}>
         <PendingRequests />
-      </Grid>
-      <Grid item xs={12} sm={12} md={3} lg={3}>
         <Holiday />
-      </Grid>
-      <Grid item xs={12} sm={12} md={3} lg={3}>
         <LongWeekend />
       </Grid>
     </Grid>

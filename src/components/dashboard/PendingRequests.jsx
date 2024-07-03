@@ -3,79 +3,89 @@ import {
   Card,
   CardContent,
   CardHeader,
-  Button,
   TableRow,
   TableBody,
   TableCell,
   TableHead,
   Table,
-  Chip,
   Avatar,
-  tableCellClasses,
   Tooltip,
+  Grid,
+  Stack,
+  tableCellClasses,
 } from "@mui/material";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
 import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
 import { styled } from "@mui/material/styles";
+import { BootstrapTooltip } from "../component_utils/ComponentUtils";
 
 const pendingRows = [
   {
     id: 1,
-    from: "Nov 25 Sat",
-    to: "Nov 30 Thur",
-    type: "Sick Leave",
-    appliedDate: "18-05-2023",
+    from: "20 Aug 2021",
+    to: "21 Aug 2021",
+    appliedDate: "19 Aug 2021",
     manager: [
       {
-        name: "Sandeep Kumar",
-        status: "approved",
-      },
-      {
-        name: "Nihal Khan",
-        status: "rejected",
+        name: "Shreya",
+        status: "pending",
       },
     ],
   },
   {
     id: 2,
-    from: "Feb 28 Wed",
-    to: "Mar 05 Mon",
-    type: "Casual Leave",
-    appliedDate: "18-05-2023",
-    approvedDate: "19-05-2023",
+    from: "20 Aug 2021",
+    to: "21 Aug 2021",
+    appliedDate: "19 Aug 2021",
     manager: [
       {
-        name: "Mahesh Babu",
+        name: "Shreya",
         status: "pending",
+      },
+      {
+        name: "Shreya",
+        status: "rejected",
       },
     ],
   },
   {
     id: 3,
-    from: "Apr 25 Sat",
-    to: "Apr 30 Thur",
-    type: "Sick Leave",
-    appliedDate: "18-05-2023",
-    approvedDate: "19-05-2023",
+    from: "20 Aug 2021",
+    to: "21 Aug 2021",
+    appliedDate: "19 Aug 2021",
     manager: [
       {
-        name: "Gowthami",
-        status: "approved",
+        name: "Shreya",
+        status: "pending",
       },
     ],
   },
   {
     id: 4,
-    from: "Nov 25 Sat",
-    to: "Nov 30 Thur",
-    type: "Sick Leave",
-    appliedDate: "18-05-2023",
-    approvedDate: "19-05-2023",
+    from: "20 Aug 2021",
+    to: "21 Aug 2021",
+    appliedDate: "19 Aug 2021",
     manager: [
       {
-        name: "Mahesh Babu",
+        name: "Shreya",
         status: "pending",
+      },
+    ],
+  },
+  {
+    id: 5,
+    from: "20 Aug 2021",
+    to: "21 Aug 2021",
+    appliedDate: "19 Aug 2021",
+    manager: [
+      {
+        name: "Shreya",
+        status: "pending",
+      },
+      {
+        name: "Shreya",
+        status: "approved",
       },
     ],
   },
@@ -87,23 +97,28 @@ const StyledTableHead = styled(TableCell)(() => ({
     fontWeight: 600,
     height: "36px !important",
     padding: "0px 15px !important",
-    color: "#8a2be2",
-  },
-  "&:first-child": {
-    borderTopLeftRadius: "4px",
-    borderBottomLeftRadius: "4px",
-  },
-  "&:last-child": {
-    borderTopRightRadius: "4px",
-    borderBottomRightRadius: "4px",
+    color: "#000000 !important",
   },
 }));
 
 const StyledTableCell = styled(TableCell)(() => ({
-  borderBottom: "1px solid #E2E1E6",
+  borderBottom: "1px solid #f5f7ff",
+  padding: "12px",
 }));
 
 const StyledTableRow = styled(TableRow)(() => ({
+  "&:nth-of-type(even)": {
+    backgroundColor: "#f5f7ff",
+    // "& .MuiTableCell-root": {
+    //   color: "#000000 !important",
+    // },
+  },
+  "&:nth-of-type(odd)": {
+    backgroundColor: "#ffffff",
+    // "& .MuiTableCell-root": {
+    //   color: "#",
+    // },
+  },
   "&:last-child td": {
     borderBottom: 0,
   },
@@ -140,54 +155,48 @@ function StyledChip({ label, status }) {
   };
 
   return (
-    <Tooltip title={label}>
+    <BootstrapTooltip title={label}>
       <Avatar sx={chipStyle}>{colors[status].icon}</Avatar>
-    </Tooltip>
+    </BootstrapTooltip>
   );
 }
 
 const PendingRequests = () => {
   return (
-    <Card className="dashboard-card" sx={{ height: "400px !important" }}>
-      <CardHeader
-        title="Leave Application Status"
-        className="dashboard-card-header"
-      />
-      <CardContent className="dashboard-card-content">
-        <Table>
-          <TableHead
-            sx={{
-              bgcolor: "#F5F6FA",
-              border: "2px solid #8a2be2",
-              borderRadius: "4px !important",
-            }}>
-            <StyledTableRow sx={{ pl: "16px !important" }}>
+    <Grid item xs={12} sm={12} md={6} lg={6} height={"100%"}>
+      <Card className="dashboard-card">
+        <CardHeader
+          title="Your Pending Leaves"
+          className="dashboard-card-header"
+        />
+        <CardContent className="dashboard-card-content virtual-scroller">
+          <Table className="pending-leave-table">
+            <TableHead className="pending-leaves-tablehead">
               <StyledTableHead>Start Date</StyledTableHead>
               <StyledTableHead>End Date</StyledTableHead>
               <StyledTableHead width={150}>Applied Date</StyledTableHead>
-              <StyledTableHead width={70}>Status</StyledTableHead>
-            </StyledTableRow>
-          </TableHead>
-          <TableBody>
-            {pendingRows.map((row, index) => (
-              <StyledTableRow key={row.id}>
-                <StyledTableCell>{row.from}</StyledTableCell>
-                <StyledTableCell>{row.to}</StyledTableCell>
-                <StyledTableCell>{row.appliedDate}</StyledTableCell>
-                <StyledTableCell>
-                  <div
-                    style={{ display: "flex", alignItems: "center", gap: 2 }}>
-                    {row?.manager.map((item) => (
-                      <StyledChip label={item.name} status={item.status} />
-                    ))}
-                  </div>
-                </StyledTableCell>
-              </StyledTableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </CardContent>
-    </Card>
+              <StyledTableHead width={100}>Status</StyledTableHead>
+            </TableHead>
+            <TableBody>
+              {pendingRows.map((row, index) => (
+                <StyledTableRow key={row.id}>
+                  <StyledTableCell>{row.from}</StyledTableCell>
+                  <StyledTableCell>{row.to}</StyledTableCell>
+                  <StyledTableCell>{row.appliedDate}</StyledTableCell>
+                  <StyledTableCell>
+                    <Stack direction={"row"} spacing={1}>
+                      {row?.manager.map((item) => (
+                        <StyledChip label={item.name} status={item.status} />
+                      ))}
+                    </Stack>
+                  </StyledTableCell>
+                </StyledTableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
+    </Grid>
   );
 };
 

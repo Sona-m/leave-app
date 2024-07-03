@@ -52,36 +52,34 @@ const Holiday = () => {
   const totalHolidays = comingLeaves.length;
 
   return (
-    <Card className="dashboard-card" sx={{ height: "400px !important" }}>
-      <CardHeader
-        title="Holiday's"
-        className="dashboard-card-header"
-        action={<Button className="detail-btn">View Details</Button>}
-      />
-      <CardContent className="dashboard-card-content">
-        {comingLeaves.map((leave, index) => (
-          <Stack
-            key={leave.id}
-            direction={"row"}
-            spacing={2}
-            py={1}
-            alignItems={"center"}
-            borderBottom={
-              index === totalHolidays - 1 ? "none" : "1px solid #E2E1E6"
-            }>
-            <Grid>
-              <Avatar src={leave.image} variant="rounded" />
-            </Grid>
-            <Grid>
-              <Typography variant="subtitle2">{leave.title}</Typography>
-              <Typography variant="caption" color={"#AAAAAE"}>
-                {leave.date}
-              </Typography>
-            </Grid>
-          </Stack>
-        ))}
-      </CardContent>
-    </Card>
+    <Grid item xs={12} sm={12} md={3} lg={3} height={"100%"}>
+      <Card className="dashboard-card">
+        <CardHeader title="Holiday's" className="dashboard-card-header" />
+        <CardContent className="dashboard-card-content virtual-scroller">
+          {comingLeaves.map((leave, index) => (
+            <Stack
+              key={leave.id}
+              direction={"row"}
+              spacing={2}
+              py={1}
+              alignItems={"flex-start"}
+              borderBottom={
+                index === totalHolidays - 1 ? "none" : "1px solid #E2E1E6"
+              }>
+              <Grid>
+                <Avatar src={leave.image} variant="rounded" />
+              </Grid>
+              <Grid>
+                <Typography variant="subtitle2">{leave.title}</Typography>
+                <Typography variant="caption" color={"#AAAAAE"}>
+                  {leave.date}
+                </Typography>
+              </Grid>
+            </Stack>
+          ))}
+        </CardContent>
+      </Card>
+    </Grid>
   );
 };
 

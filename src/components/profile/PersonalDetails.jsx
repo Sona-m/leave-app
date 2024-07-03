@@ -1,23 +1,22 @@
-import React from "react";
+import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import {
-  Grid,
-  Typography,
-  Card,
-  CardHeader,
-  tableCellClasses,
-  Table,
-  TableRow,
-  TableCell,
-  TableHead,
-  TableBody,
-  TextField,
   Avatar,
   Box,
+  Card,
+  Grid,
   IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  TextField,
+  Typography,
+  tableCellClasses,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import React from "react";
 import profile from "../../assets/images/myProfile.jpg";
-import EditRoundedIcon from "@mui/icons-material/EditRounded";
 
 const data = {
   birth: "18-08-2000",

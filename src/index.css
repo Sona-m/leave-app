@@ -12,4 +12,33 @@ code {
     monospace;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #b1b0b0;
+    border-radius: 5px; 
+  }
+
+
+ ::-webkit-scrollbar-track {
+     background-color: #fff;
+ }
+
+.virtual-scroller::-webkit-scrollbar-thumb{
+  background-color: #4b49ac;
+  border-top-left-radius: 5px !important;
+  border-bottom-left-radius: 5px !important;
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+  height: 10% !important;
+  width: 6px;
+}
+.virtual-scroller::-webkit-scrollbar-track{
+  background-color: #fff;
+}
+
+
+
 
